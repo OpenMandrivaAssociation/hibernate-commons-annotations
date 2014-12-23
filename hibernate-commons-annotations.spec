@@ -3,19 +3,17 @@
 %global namedversion %{version}%{?namedreltag}
 
 Name:             hibernate-commons-annotations
-Version:          4.0.3
-Release:          1.0%{?dist}
+Version:          4.0.4
+Release:          1.1
 Summary:          Hibernate Annotations
-
+Group:            Development/Java
 # For details see:
 # - https://github.com/hibernate/hibernate-commons-annotations/commit/4a902b4f97f923f9044a4127357b44fe5dc39cdc
 # - https://github.com/hibernate/hibernate-commons-annotations/commit/a11c44cd65dadcedaf8981379b94a2c4e31428d1
 License:          LGPLv2
 URL:              http://www.hibernate.org/
-Source0:          https://github.com/hibernate/hibernate-commons-annotations/archive/hibernate-commons-annotations-%{namedversion}.tar.gz
-
-# Support for new jboss-logging-tools
-Patch0:           New-logging-processor-version.patch
+Source0:          https://github.com/hibernate/hibernate-commons-annotations/archive/%{namedversion}.tar.gz
+Source1:          https://repository.jboss.org/nexus/service/local/repositories/central/content/org/hibernate/common/hibernate-commons-annotations/%{namedversion}/hibernate-commons-annotations-%{namedversion}.pom
 
 BuildArch:        noarch
 
@@ -53,11 +51,15 @@ Summary:        Javadocs for %{name}
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n hibernate-commons-annotations-hibernate-commons-annotations-%{namedversion}
-%patch0 -p1
+%setup -q -n hibernate-commons-annotations-%{namedversion}
+
+cp %{SOURCE1} pom.xml
+
+%pom_add_dep org.jboss.logging:jboss-logging-processor:1.2.0:provided
+%pom_add_dep junit:junit:4:test
 
 %build
-%mvn_build
+%mvn_build -f
 
 %install
 %mvn_install
