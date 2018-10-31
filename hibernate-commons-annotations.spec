@@ -4,7 +4,7 @@
 
 Name:             hibernate-commons-annotations
 Version:          4.0.4
-Release:          1.2
+Release:          1.3
 Summary:          Hibernate Annotations
 Group:            Development/Java
 # For details see:
