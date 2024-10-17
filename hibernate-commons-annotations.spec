@@ -11,7 +11,7 @@ Group:            Development/Java
 # - https://github.com/hibernate/hibernate-commons-annotations/commit/4a902b4f97f923f9044a4127357b44fe5dc39cdc
 # - https://github.com/hibernate/hibernate-commons-annotations/commit/a11c44cd65dadcedaf8981379b94a2c4e31428d1
 License:          LGPLv2
-URL:              http://www.hibernate.org/
+URL:              https://www.hibernate.org/
 Source0:          https://github.com/hibernate/hibernate-commons-annotations/archive/%{namedversion}.tar.gz
 Source1:          https://repository.jboss.org/nexus/service/local/repositories/central/content/org/hibernate/common/hibernate-commons-annotations/%{namedversion}/hibernate-commons-annotations-%{namedversion}.pom
 
